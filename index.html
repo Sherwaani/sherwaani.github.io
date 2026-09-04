@@ -1,68 +1,1369 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sherwaani | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hasan | Unity Game Developer &amp; C# Programmer</title>
+<meta name="description" content="Hasan is a Unity Game Developer from Lahore, Pakistan with 3+ years of experience in Unity and C#, specializing in gameplay programming, game systems, mobile games, Firebase, analytics, and monetization.">
+<meta name="author" content="Hasan">
+<meta name="theme-color" content="#0A0C11">
+<link rel="canonical" href="https://hasan.dev/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hasan | Unity Game Developer &amp; C# Programmer">
+<meta property="og:description" content="Unity and C# developer in Lahore, Pakistan. Gameplay systems, mobile games, Firebase, ads and analytics integration.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230A0C11'/><path d='M50 18 78 34v32L50 82 22 66V34z' fill='none' stroke='%233E8BFF' stroke-width='6'/></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Hasan","jobTitle":"Unity Game Developer","email":"mailto:sherwaani3688@gmail.com","url":"https://www.linkedin.com/in/sherwaani/","address":{"@type":"PostalAddress","addressLocality":"Lahore","addressCountry":"Pakistan"},"knowsAbout":["Unity Engine","C#","Gameplay Programming","Game Systems","Mobile Game Development","Firebase","Game Analytics"],"sameAs":["https://www.linkedin.com/in/sherwaani/"]}
+</script>
+<style>
+/* ============================================================
+   TOKENS — palette taken from the Unity editor itself:
+   scene-view background, gizmo axis blue/red, selection orange
+   ============================================================ */
+:root{
+  --void:#0A0C11;
+  --void-2:#0D1017;
+  --panel:rgba(255,255,255,.035);
+  --panel-solid:#12151D;
+  --line:rgba(150,170,205,.13);
+  --line-strong:rgba(150,170,205,.26);
+  --ink:#EDF1F7;
+  --ink-2:#B9C1D1;
+  --muted:#828CA0;
+  --z:#3E8BFF;          /* gizmo Z axis  — primary  */
+  --x:#FF5A4E;          /* gizmo X axis  — signal   */
+  --y:#5BD08A;          /* gizmo Y axis  — success  */
+  --select:#FFB020;     /* editor selection outline */
+  --glow-z:rgba(62,139,255,.35);
+  --maxw:1240px;
+  --gutter:clamp(20px,5vw,64px);
+  --r:14px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--void);color:var(--ink);
+  font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:clamp(15px,.42vw + 14px,17px);line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{ /* fine scene grid, fixed, very low contrast */
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:72px 72px;opacity:.28;
+  mask-image:radial-gradient(ellipse 120% 90% at 50% 0%,#000 20%,transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 120% 90% at 50% 0%,#000 20%,transparent 78%);
+}
+img,svg,canvas{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--z);color:#04060B}
+:focus-visible{outline:2px solid var(--select);outline-offset:3px;border-radius:4px}
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: white;
-            text-align: center;
-        }
+h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-.03em;line-height:1.02}
+h1{font-size:clamp(2.9rem,7.4vw,6.1rem);font-weight:900}
+h2{font-size:clamp(2.1rem,4.6vw,3.9rem)}
+h3{font-size:clamp(1.1rem,1.5vw,1.35rem);letter-spacing:-.015em;line-height:1.25}
+p{margin:0 0 1.1em}
+.lede{font-size:clamp(1.02rem,1.15vw,1.22rem);color:var(--ink-2);max-width:62ch}
+.muted{color:var(--muted)}
+.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
 
-        header {
-            padding: 100px 20px;
-        }
+/* path label — reads like a Unity hierarchy path, not a decorative eyebrow */
+.path{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--muted);letter-spacing:.02em;margin-bottom:1.6rem;display:flex;align-items:center;gap:.55rem}
+.path::before{content:"";width:7px;height:7px;border:1.5px solid var(--z);transform:rotate(45deg);flex:none}
 
-        h1 {
-            font-size: 60px;
-            margin-bottom: 10px;
-        }
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);position:relative;z-index:1}
+section{padding-block:clamp(76px,10vw,150px);position:relative}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--line-strong) 12%,var(--line-strong) 88%,transparent);border:0;margin:0}
 
-        h1 span {
-            color: #00aaff;
-        }
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.08s}.rv[data-d="2"]{transition-delay:.16s}
+.rv[data-d="3"]{transition-delay:.24s}.rv[data-d="4"]{transition-delay:.32s}
 
-        p {
-            font-size: 20px;
-            color: #bbb;
-        }
+/* ============================= NAV ============================= */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .35s var(--ease),border-color .35s,backdrop-filter .35s}
+.nav::after{content:"";position:absolute;inset:auto 0 0 0;height:1px;background:var(--line);opacity:0;transition:opacity .35s}
+.nav.stuck{background:rgba(10,12,17,.72);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px)}
+.nav.stuck::after{opacity:1}
+.nav-in{max-width:var(--maxw);margin-inline:auto;padding:22px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:24px;transition:padding .35s var(--ease)}
+.nav.stuck .nav-in{padding-block:12px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.02em;font-size:1.02rem}
+.brand svg{width:26px;height:26px;flex:none}
+.brand span.sub{font-family:"JetBrains Mono",monospace;font-weight:400;font-size:.7rem;color:var(--muted);letter-spacing:.04em}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{padding:8px 13px;font-size:.88rem;color:var(--ink-2);border-radius:8px;position:relative;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:1px;background:var(--z);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--ink)}
+.nav-cta{border:1px solid var(--line-strong);padding:9px 17px;border-radius:999px;font-size:.86rem;font-weight:600;transition:border-color .3s,background .3s,color .3s}
+.nav-cta:hover{border-color:var(--z);background:rgba(62,139,255,.1)}
+.burger{display:none;width:42px;height:42px;border:1px solid var(--line-strong);border-radius:10px;align-items:center;justify-content:center}
+.burger i{display:block;width:16px;height:1.5px;background:var(--ink);position:relative;transition:background .2s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:16px;height:1.5px;background:var(--ink);transition:transform .3s var(--ease)}
+.burger i::before{top:-5px}.burger i::after{top:5px}
+.nav.open .burger i{background:transparent}
+.nav.open .burger i::before{transform:translateY(5px) rotate(45deg)}
+.nav.open .burger i::after{transform:translateY(-5px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;padding:0 var(--gutter) 28px;gap:2px}
+.mobile-menu a{padding:14px 0;border-bottom:1px solid var(--line);font-size:1.05rem;font-weight:600}
+.nav.open .mobile-menu{display:flex}
+.nav.open{background:rgba(10,12,17,.96);backdrop-filter:blur(18px)}
 
-        .button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: #00aaff;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
-    </style>
+/* ============================= HERO ============================= */
+.hero{min-height:100svh;display:flex;align-items:center;padding-top:120px;padding-bottom:70px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(28px,4vw,60px);align-items:center;width:100%}
+.hero h1{margin-bottom:26px}
+.hero h1 .l{display:block;overflow:hidden}
+.hero h1 .l span{display:block;transform:translateY(105%);animation:riseIn .95s var(--ease-out) forwards}
+.hero h1 .l:nth-child(2) span{animation-delay:.1s}
+@keyframes riseIn{to{transform:none}}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--z);margin-bottom:22px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;opacity:0;animation:fadeUp .8s var(--ease-out) .25s forwards}
+.kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--y);box-shadow:0 0 0 0 rgba(91,208,138,.55);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(91,208,138,0)}100%{box-shadow:0 0 0 0 rgba(91,208,138,0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero .lede{opacity:0;animation:fadeUp .8s var(--ease-out) .42s forwards}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;opacity:0;animation:fadeUp .8s var(--ease-out) .55s forwards}
+.hero-meta{display:flex;flex-wrap:wrap;gap:0;margin-top:46px;border-top:1px solid var(--line);opacity:0;animation:fadeUp .8s var(--ease-out) .68s forwards}
+.hero-meta div{padding:18px 26px 0 0;margin-right:26px;border-right:1px solid var(--line)}
+.hero-meta div:last-child{border-right:0}
+.hero-meta b{display:block;font-size:1.6rem;font-weight:800;letter-spacing:-.03em}
+.hero-meta small{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--muted)}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:.94rem;letter-spacing:-.01em;transition:transform .25s var(--ease-out),background .3s,border-color .3s,box-shadow .3s;will-change:transform}
+.btn-primary{background:var(--z);color:#05080F;box-shadow:0 8px 30px -10px var(--glow-z)}
+.btn-primary:hover{box-shadow:0 14px 44px -10px var(--glow-z)}
+.btn-ghost{border:1px solid var(--line-strong)}
+.btn-ghost:hover{border-color:var(--ink-2);background:rgba(255,255,255,.04)}
+.btn svg{width:15px;height:15px}
+
+/* hero scene */
+.scene{position:relative;aspect-ratio:1/1;width:100%;max-width:600px;margin-inline:auto;opacity:0;animation:fadeUp 1s var(--ease-out) .3s forwards}
+.scene canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:20px}
+.scene-frame{position:absolute;inset:0;border:1px solid var(--line);border-radius:20px;background:radial-gradient(120% 100% at 60% 10%,rgba(62,139,255,.12),transparent 60%);overflow:hidden}
+.scene-frame::before{content:"";position:absolute;inset:0;background:conic-gradient(from 180deg at 50% 50%,transparent,rgba(62,139,255,.08),transparent 40%);animation:spin 22s linear infinite}
+@keyframes spin{to{transform:rotate(1turn)}}
+.corner{position:absolute;width:16px;height:16px;border:1.5px solid var(--select);opacity:.85}
+.corner.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.corner.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
+.corner.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}
+.corner.br{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.float{position:absolute;background:rgba(16,20,29,.72);border:1px solid var(--line-strong);border-radius:12px;backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);padding:11px 13px;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--ink-2);will-change:transform;box-shadow:0 20px 50px -24px #000}
+.float b{color:var(--ink);font-weight:500}
+.f-fps{top:6%;left:4%}
+.f-fps .num{font-size:1.5rem;color:var(--y);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.f-code{bottom:8%;left:2%;line-height:1.75;padding:14px 16px}
+.f-code .kw{color:#C792EA}.f-code .ty{color:#7FD6FF}.f-code .fn{color:var(--select)}.f-code .cm{color:#5C6577}
+.f-stats{top:12%;right:3%;width:172px}
+.f-stats .bar{height:4px;border-radius:3px;background:rgba(255,255,255,.09);margin:6px 0 11px;overflow:hidden}
+.f-stats .bar i{display:block;height:100%;border-radius:3px;background:var(--z);transform-origin:left;transform:scaleX(.2);transition:transform 1.6s var(--ease-out)}
+.f-stats .bar.b2 i{background:var(--y)}.f-stats .bar.b3 i{background:var(--select)}
+.f-device{bottom:6%;right:6%;width:104px;height:184px;border-radius:16px;padding:0;overflow:hidden;background:rgba(11,14,21,.86)}
+.f-device .screen{position:absolute;inset:8px;border-radius:10px;background:linear-gradient(170deg,rgba(62,139,255,.2),rgba(255,90,78,.12));overflow:hidden}
+.f-device .hud{position:absolute;top:7px;left:8px;right:8px;display:flex;justify-content:space-between;font-size:.55rem;color:#DCE6FF}
+.f-device .player{position:absolute;bottom:16px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:4px;background:var(--ink);box-shadow:0 0 14px rgba(255,255,255,.5)}
+.f-device .obst{position:absolute;width:12px;height:12px;border-radius:3px;background:var(--x)}
+.f-graph{position:absolute;left:16%;top:46%;width:206px}
+.f-graph svg{width:100%;height:52px;overflow:visible}
+.f-graph path.line{fill:none;stroke:var(--z);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:400;stroke-dashoffset:400;animation:draw 2.6s var(--ease-out) 1s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ===================== BIG STATEMENT ===================== */
+.statement{text-align:left}
+.statement .big{font-size:clamp(2.4rem,6.2vw,5.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.03;max-width:16ch}
+.statement .big .w{display:inline-block;overflow:hidden;vertical-align:bottom}
+.statement .big .w > i{display:inline-block;font-style:normal;transform:translateY(102%);transition:transform .75s var(--ease-out)}
+.statement.in .big .w > i{transform:none}
+.statement .big em{font-style:normal;color:var(--z)}
+.statement .lede{margin-top:34px}
+
+/* ===================== SECTION HEAD ===================== */
+.head{max-width:70ch;margin-bottom:clamp(38px,5vw,64px)}
+.head h2 + p{margin-top:20px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px)}
+
+/* ===================== ABOUT ===================== */
+.about-card{border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,3vw,34px);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012))}
+.about-card h3{margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{font-family:"JetBrains Mono",monospace;font-size:.72rem;padding:6px 11px;border:1px solid var(--line-strong);border-radius:7px;color:var(--ink-2);transition:border-color .25s,color .25s,background .25s}
+.chip:hover{border-color:var(--z);color:var(--ink);background:rgba(62,139,255,.09)}
+
+/* ===================== TIMELINE ===================== */
+.tl{position:relative;padding-left:clamp(28px,4vw,54px)}
+.tl-track{position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.tl-track i{position:absolute;inset:0;background:linear-gradient(180deg,var(--z),var(--select));transform-origin:top;transform:scaleY(0);transition:transform .18s linear}
+.tl-item{position:relative;padding-bottom:clamp(38px,5vw,66px)}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:calc(-1 * clamp(28px,4vw,54px) + 1px);top:9px;width:12px;height:12px;border-radius:50%;background:var(--void);border:2px solid var(--line-strong);transition:border-color .4s,box-shadow .4s,background .4s}
+.tl-item.in::before{border-color:var(--z);box-shadow:0 0 0 5px rgba(62,139,255,.14)}
+.tl-stage{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--muted);margin-bottom:9px}
+.tl-item h3{margin-bottom:12px}
+.tl-item p{max-width:62ch}
+
+/* ===================== SKILL / CONCEPT CARDS ===================== */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{position:relative;border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,2.4vw,28px);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));overflow:hidden;transition:border-color .35s var(--ease),transform .35s var(--ease-out),background .35s}
+.card::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .35s;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(62,139,255,.14),transparent 70%);pointer-events:none}
+.card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.card:hover::after{opacity:1}
+.card h3{margin-bottom:10px}
+.card p{color:var(--ink-2);font-size:.94rem;margin:0}
+.card .idx{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted);margin-bottom:14px;display:block}
+.card .ico{width:32px;height:32px;margin-bottom:16px;color:var(--z);transition:transform .4s var(--ease-out),color .3s}
+.card:hover .ico{transform:translateY(-2px) scale(1.06);color:var(--select)}
+
+/* unity ecosystem list card */
+.eco li{list-style:none}
+.eco ul{margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
+.eco li{font-family:"JetBrains Mono",monospace;font-size:.71rem;color:var(--muted);padding:5px 9px;border:1px solid var(--line);border-radius:6px;transition:color .25s,border-color .25s}
+.card:hover .eco li{color:var(--ink-2);border-color:var(--line-strong)}
+
+/* ===================== C# SECTION ===================== */
+.cs-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(26px,4vw,56px);align-items:start}
+.cs-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.cs-tab{font-family:"JetBrains Mono",monospace;font-size:.76rem;padding:8px 13px;border:1px solid var(--line);border-radius:8px;color:var(--muted);transition:all .25s var(--ease)}
+.cs-tab:hover{color:var(--ink-2);border-color:var(--line-strong)}
+.cs-tab[aria-selected="true"]{color:#05080F;background:var(--z);border-color:var(--z);font-weight:700}
+.editor{border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;background:#0B0E15}
+.editor-bar{display:flex;align-items:center;gap:9px;padding:11px 15px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.025)}
+.editor-bar .d{width:9px;height:9px;border-radius:50%;background:var(--line-strong)}
+.editor-bar .name{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--muted);margin-left:6px}
+.editor pre{margin:0;padding:20px clamp(16px,2vw,24px);font-family:"JetBrains Mono",monospace;font-size:.79rem;line-height:1.85;overflow-x:auto;color:#C6D0E0;tab-size:2}
+.editor pre .kw{color:#C792EA}.editor pre .ty{color:#7FD6FF}.editor pre .fn{color:var(--select)}
+.editor pre .st{color:#9BE59B}.editor pre .cm{color:#5C6577;font-style:italic}.editor pre .nm{color:#F5B37A}
+.cs-note{margin-top:18px;font-size:.92rem;color:var(--muted);border-left:2px solid var(--z);padding-left:14px}
+
+/* ===================== GENRES ===================== */
+.genres{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;perspective:1200px}
+.genre{position:relative;min-height:216px;padding:22px;border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.012));overflow:hidden;transform-style:preserve-3d;transition:border-color .35s,box-shadow .45s var(--ease-out);will-change:transform}
+.genre:hover{border-color:var(--select);box-shadow:0 26px 60px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,176,32,.25) inset}
+.genre .gname{font-size:1.18rem;font-weight:800;letter-spacing:-.02em;margin-bottom:9px;transform:translateZ(26px)}
+.genre p{font-size:.87rem;color:var(--ink-2);margin:0;transform:translateZ(16px);max-width:30ch}
+.genre .gviz{position:absolute;right:-6px;bottom:-6px;width:118px;height:118px;opacity:.45;color:var(--z);transition:opacity .4s,color .4s,transform .5s var(--ease-out);transform:translateZ(8px)}
+.genre:hover .gviz{opacity:.95;color:var(--select);transform:translateZ(34px) scale(1.06)}
+.genre .spark{position:absolute;inset:0;opacity:0;transition:opacity .4s;background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(255,176,32,.16),transparent 65%);pointer-events:none}
+.genre:hover .spark{opacity:1}
+
+/* ===================== PIPELINE ===================== */
+.pipe{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.step{position:relative;border:1px solid var(--line);border-radius:12px;padding:20px 18px;background:rgba(255,255,255,.022);transition:border-color .5s,background .5s,transform .5s var(--ease-out)}
+.step .n{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted);transition:color .5s}
+.step h3{font-size:1.05rem;margin:9px 0 8px}
+.step p{font-size:.85rem;color:var(--muted);margin:0}
+.step.on{border-color:var(--z);background:rgba(62,139,255,.075);transform:translateY(-3px)}
+.step.on .n{color:var(--z)}
+
+/* ===================== INTERACTIVE PICKER ===================== */
+.picker{border:1px solid var(--line-strong);border-radius:20px;padding:clamp(22px,3.4vw,42px);background:linear-gradient(180deg,rgba(62,139,255,.07),rgba(255,255,255,.012));position:relative;overflow:hidden}
+.picker::before{content:"";position:absolute;inset:0;background:radial-gradient(600px circle at 85% 0%,rgba(62,139,255,.14),transparent 60%);pointer-events:none}
+.pick-btns{display:flex;flex-wrap:wrap;gap:9px;margin:26px 0 30px}
+.pick{padding:10px 17px;border:1px solid var(--line-strong);border-radius:999px;font-size:.85rem;font-weight:600;font-family:"JetBrains Mono",monospace;color:var(--ink-2);transition:all .25s var(--ease)}
+.pick:hover{border-color:var(--ink-2);color:var(--ink);transform:translateY(-1px)}
+.pick[aria-pressed="true"]{background:var(--ink);color:#05080F;border-color:var(--ink)}
+.answer{border-top:1px solid var(--line);padding-top:26px;min-height:180px}
+.answer h3{font-size:clamp(1.3rem,2.4vw,1.9rem);margin-bottom:14px}
+.answer .sys{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.answer .sys span{font-family:"JetBrains Mono",monospace;font-size:.75rem;padding:7px 12px;border-radius:8px;border:1px solid rgba(62,139,255,.4);background:rgba(62,139,255,.1);opacity:0;transform:translateY(8px);animation:chipIn .45s var(--ease-out) forwards}
+@keyframes chipIn{to{opacity:1;transform:none}}
+
+/* ===================== PHILOSOPHY ===================== */
+.phil{border-top:1px solid var(--line)}
+.phil-row{display:grid;grid-template-columns:88px 1fr;gap:clamp(18px,3vw,44px);padding:clamp(26px,3.6vw,46px) 0;border-bottom:1px solid var(--line);align-items:baseline;transition:background .4s}
+.phil-row:hover{background:rgba(255,255,255,.018)}
+.phil-row .n{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--z)}
+.phil-row h3{font-size:clamp(1.4rem,3vw,2.3rem);font-weight:800;letter-spacing:-.03em;margin-bottom:10px}
+.phil-row p{margin:0;color:var(--ink-2);max-width:56ch}
+
+/* ===================== MINDSET ===================== */
+.mind p{font-size:clamp(1.25rem,2.9vw,2.05rem);font-weight:700;letter-spacing:-.03em;line-height:1.28;max-width:20ch;color:var(--ink)}
+.mind p.dim{color:var(--muted)}
+.mind .stack{display:flex;flex-direction:column;gap:clamp(20px,3vw,38px)}
+
+/* ===================== STACK WALL ===================== */
+.wall{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.wall div{padding:clamp(22px,3vw,34px) 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .3s}
+.wall div:hover{background:rgba(62,139,255,.06)}
+.wall b{display:block;font-size:1.05rem;font-weight:700;letter-spacing:-.02em;margin-bottom:5px}
+.wall small{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--muted)}
+.wall .primary b{color:var(--z);font-size:1.35rem}
+
+/* ===================== CONTACT / FOOTER ===================== */
+.cta{text-align:center;padding-block:clamp(90px,12vw,170px)}
+.cta h2{font-size:clamp(2.6rem,7vw,5.4rem);font-weight:900;letter-spacing:-.04em}
+.cta .lede{margin:22px auto 0;text-align:center}
+.cta-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:40px}
+.cta-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 30px;margin-top:44px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--muted)}
+.cta-meta a:hover{color:var(--ink)}
+footer{border-top:1px solid var(--line);padding-block:44px 54px}
+.foot{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start}
+.foot .fb{font-size:1.5rem;font-weight:900;letter-spacing:-.03em}
+.foot .fm{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--muted);line-height:2}
+.foot a{border-bottom:1px solid transparent;transition:border-color .25s,color .25s}
+.foot a:hover{color:var(--ink);border-color:var(--z)}
+
+/* ===================== CURSOR ===================== */
+.cur,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;mix-blend-mode:screen}
+.cur{width:6px;height:6px;background:var(--ink);margin:-3px 0 0 -3px}
+.cur-ring{width:34px;height:34px;border:1px solid rgba(200,215,240,.55);margin:-17px 0 0 -17px;transition:width .28s var(--ease-out),height .28s var(--ease-out),margin .28s var(--ease-out),border-color .28s,border-radius .28s,background .28s}
+.cur-ring.hot{width:52px;height:52px;margin:-26px 0 0 -26px;border-color:var(--select);background:rgba(255,176,32,.09);border-radius:12px}
+@media (hover:none),(pointer:coarse){.cur,.cur-ring{display:none!important}}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width:1080px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .genres{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pipe{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cs-wrap{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .nav-links,.nav-cta{display:none}
+  .burger{display:flex}
+  .hero{min-height:auto;padding-top:104px}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .scene{max-width:460px;order:2}
+  .split{grid-template-columns:1fr}
+  .g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mind p{max-width:100%}
+}
+@media (max-width:620px){
+  .g2,.g3,.g4,.genres,.pipe{grid-template-columns:1fr}
+  .hero-meta div{padding-right:18px;margin-right:18px}
+  .hero-meta b{font-size:1.3rem}
+  .f-graph{display:none}
+  .f-device{width:84px;height:150px}
+  .f-stats{width:142px}
+  .phil-row{grid-template-columns:1fr;gap:8px}
+  .btn{width:100%;justify-content:center}
+  .wall div{border-right:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+  .hero h1 .l span{transform:none}
+  .statement .big .w > i{transform:none}
+}
+</style>
 </head>
-
 <body>
+<div class="cur" aria-hidden="true"></div>
+<div class="cur-ring" aria-hidden="true"></div>
 
-    <header>
-        <h1>Hi, I'm <span>Sherwaani</span></h1>
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#home" aria-label="Hasan — home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 14 82 32v36L50 86 18 68V32z" fill="none" stroke="#3E8BFF" stroke-width="6"/><path d="M50 14v36L18 68" fill="none" stroke="#FFB020" stroke-width="4" opacity=".8"/></svg>
+      Hasan <span class="sub">unity&nbsp;·&nbsp;c#</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#games">Games</a>
+      <a href="#journey">Journey</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta magnetic" href="#contact">Start a project</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><i></i></button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+    <a href="#games">Games</a><a href="#journey">Journey</a><a href="#services">Services</a><a href="#contact">Contact</a>
+  </nav>
+</header>
 
-        <p>Game Developer | Unity Developer | C# Programmer</p>
+<main>
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker"><span class="dot"></span> Unity Game Developer · C# Programmer · Lahore, Pakistan</div>
+      <h1>
+        <span class="l"><span>I build games,</span></span>
+        <span class="l"><span>not just code.</span></span>
+      </h1>
+      <p class="lede">I'm Hasan, a Unity developer with 3+ years building gameplay systems, mechanics, integrations and complete playable experiences with Unity and C#. From a mechanic in your head to a build you can hold.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary magnetic" href="#contact">Tell me your game idea</a>
+        <a class="btn btn-ghost magnetic" href="#games">See what I can build</a>
+      </div>
+      <div class="hero-meta">
+        <div><b data-count="3" data-suffix="+">0</b><small>years with Unity</small></div>
+        <div><b data-count="8" data-suffix="">0</b><small>genre families</small></div>
+        <div><b>C#</b><small>from mechanics to services</small></div>
+      </div>
+    </div>
 
-        <a class="button" href="#about">
-            Explore My Portfolio
-        </a>
-    </header>
+    <div class="scene" id="scene" aria-hidden="true">
+      <div class="scene-frame">
+        <canvas id="sceneCanvas"></canvas>
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      </div>
 
-    <section id="about">
+      <div class="float f-fps" data-depth="26">
+        <div class="num" id="fps">60</div>
+        <div>frames / second<br><b id="frameMs">16.6 ms</b> per frame</div>
+      </div>
 
-        <h2>About Me</h2>
+      <div class="float f-stats" data-depth="18">
+        <div><b>Player.Move()</b></div>
+        <div class="bar"><i data-fill=".82"></i></div>
+        <div><b>Physics.Step()</b></div>
+        <div class="bar b2"><i data-fill=".54"></i></div>
+        <div><b>UI.Update()</b></div>
+        <div class="bar b3"><i data-fill=".31"></i></div>
+      </div>
 
-        <p>
-            Welcome to my portfolio website.
-        </p>
+      <div class="float f-graph" data-depth="10">
+        <svg viewBox="0 0 210 52" preserveAspectRatio="none" aria-hidden="true">
+          <path class="line" d="M0 40 L24 34 L48 37 L72 26 L96 29 L120 18 L144 22 L168 12 L192 15 L210 6"/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;margin-top:6px"><span>session length</span><span style="color:var(--z)">retention</span></div>
+      </div>
 
-    </section>
+      <div class="float f-code" data-depth="34">
+        <div><span class="cm">// gameplay loop</span></div>
+        <div><span class="kw">void</span> <span class="fn">FixedUpdate</span>() {</div>
+        <div>&nbsp;&nbsp;<span class="ty">_rb</span>.AddForce(_input * speed);</div>
+        <div>}</div>
+      </div>
 
+      <div class="float f-device" data-depth="22">
+        <div class="screen">
+          <div class="hud"><span>SCORE 1240</span><span>❤ ❤ ❤</span></div>
+          <div class="obst" id="obst1" style="top:20%;left:20%"></div>
+          <div class="obst" id="obst2" style="top:50%;left:62%;background:var(--select)"></div>
+          <div class="player" id="player"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= BIG STATEMENT ======================= -->
+<section class="statement" id="statement">
+  <div class="wrap">
+    <h2 class="big" data-split>One engine. One language. <em>Endless possibilities.</em></h2>
+    <p class="lede">With Unity and C# I can approach different gameplay problems, mechanics, systems and genres while keeping performance, scalability and player experience in mind.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ ABOUT ============================ -->
+<section id="about">
+  <div class="wrap">
+    <div class="split">
+      <div class="rv">
+        <div class="path mono">Scene / About</div>
+        <h2>Who I am</h2>
+        <p class="lede" style="margin-top:22px">I'm a Unity Game Developer from Lahore, Pakistan, with more than three years working with Unity Engine and C#. My focus has been on understanding how games actually work beneath the surface — gameplay logic, player interaction, physics, UI, systems, optimization, integrations and monetization.</p>
+      </div>
+      <div class="rv" data-d="1">
+        <div class="about-card">
+          <h3>How I approach a project</h3>
+          <p class="muted" style="font-size:.95rem">I take an idea and break it down into individual systems before turning those systems into a playable experience. Fast arcade mechanics, physics-driven gameplay, simulation systems, hypercasual loops, action gameplay or mobile-focused builds — each one is a technical problem solved through clean architecture and thoughtful gameplay programming.</p>
+          <div class="chips">
+            <span class="chip">gameplay programming</span><span class="chip">game systems</span>
+            <span class="chip">unity physics</span><span class="chip">unity ui</span>
+            <span class="chip">mobile builds</span><span class="chip">firebase</span>
+            <span class="chip">ads &amp; monetization</span><span class="chip">analytics</span>
+            <span class="chip">optimization</span><span class="chip">.net concepts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ JOURNEY ============================ -->
+<section id="journey">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="path mono">Scene / Journey</div>
+      <h2>My journey with Unity</h2>
+      <p class="lede">Five stages, in the order they actually happened — engine, language, systems, production, and the perspective that came out of all of it.</p>
+    </div>
+    <div class="tl" id="timeline">
+      <div class="tl-track"><i id="tlFill"></i></div>
+
+      <article class="tl-item rv">
+        <div class="tl-stage">Stage 01</div>
+        <h3>Learning the engine</h3>
+        <p class="muted">Started with the fundamentals of how Unity puts a scene together: GameObjects, components, prefabs, transforms, cameras, colliders and rigidbodies, UI, animation, input and scene management.</p>
+      </article>
+
+      <article class="tl-item rv">
+        <div class="tl-stage">Stage 02</div>
+        <h3>Learning C# properly</h3>
+        <p class="muted">Moved past wiring components together and went deep on programming — object-oriented design, interfaces, inheritance, encapsulation, events and delegates, collections, generics, LINQ, async work, coroutines and tasks, reflection, design patterns and code architecture.</p>
+      </article>
+
+      <article class="tl-item rv">
+        <div class="tl-stage">Stage 03</div>
+        <h3>Gameplay systems</h3>
+        <p class="muted">Building complete systems rather than isolated scripts: player controllers, camera systems, enemy logic, game managers, level and progression systems, UI systems, save/load, physics interactions, input, spawning, object pooling and game state.</p>
+      </article>
+
+      <article class="tl-item rv">
+        <div class="tl-stage">Stage 04</div>
+        <h3>Production and integrations</h3>
+        <p class="muted">Expanded into everything that surrounds a modern game: Firebase, advertisement SDKs, analytics and event tracking, monetization, player data, remote configuration, mobile integrations and performance work.</p>
+      </article>
+
+      <article class="tl-item rv">
+        <div class="tl-stage">Stage 05</div>
+        <h3>Versatile development</h3>
+        <p class="muted">Today I work from a broader view rather than one genre: mechanics, then systems, then player experience, then performance, then monetization.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ SKILLS ============================ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="path mono">Scene / Skills</div>
+      <h2>What I work with every day</h2>
+      <p class="lede">Four things carry everything else: the engine, the language, the gameplay code and the way it's all structured.</p>
+    </div>
+    <div class="grid g4">
+      <article class="card tilt rv">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M12 12v9.5M12 12 3.5 7M12 12l8.5-5"/></svg>
+        <span class="idx mono">01</span>
+        <h3>Unity Engine</h3>
+        <p>Three-plus years of practical development inside Unity — scenes, prefabs, physics, UI, animation and builds.</p>
+      </article>
+      <article class="card tilt rv" data-d="1">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg>
+        <span class="idx mono">02</span>
+        <h3>C#</h3>
+        <p>A strong practical grasp of C# and object-oriented programming, used to shape systems rather than glue scripts together.</p>
+      </article>
+      <article class="card tilt rv" data-d="2">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>
+        <span class="idx mono">03</span>
+        <h3>Gameplay programming</h3>
+        <p>Mechanics and gameplay systems written from scratch — movement, combat, interaction, state, feel.</p>
+      </article>
+      <article class="card tilt rv" data-d="3">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4"/></svg>
+        <span class="idx mono">04</span>
+        <h3>Game architecture</h3>
+        <p>Structuring a project so systems stay separable, testable and cheap to change three months in.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ C# ============================ -->
+<section id="csharp">
+  <div class="wrap">
+    <div class="cs-wrap">
+      <div class="rv">
+        <div class="path mono">Scene / Language</div>
+        <h2>C# is my foundation</h2>
+        <p class="lede" style="margin-top:20px">C# isn't just the scripting language I type into Unity — it's how I decide what a system is, what it owns, and how it talks to the rest of the game. Pick a concept to see how I use it.</p>
+        <div class="cs-tabs" role="tablist" aria-label="C# concepts" style="margin-top:26px">
+          <button class="cs-tab" role="tab" aria-selected="true" data-cs="0">interfaces &amp; oop</button>
+          <button class="cs-tab" role="tab" aria-selected="false" data-cs="1">events &amp; delegates</button>
+          <button class="cs-tab" role="tab" aria-selected="false" data-cs="2">generics &amp; pooling</button>
+          <button class="cs-tab" role="tab" aria-selected="false" data-cs="3">async &amp; coroutines</button>
+          <button class="cs-tab" role="tab" aria-selected="false" data-cs="4">linq &amp; collections</button>
+        </div>
+        <p class="cs-note">Strong practical understanding of C# for Unity development — enough to build and debug the systems above, and still learning the parts of the language I haven't needed yet.</p>
+      </div>
+
+      <div class="rv" data-d="1">
+        <div class="editor">
+          <div class="editor-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="name" id="fileName">IDamageable.cs</span></div>
+          <pre data-cs-panel="0"><span class="cm">// One contract, any object that can take a hit.</span>
+<span class="kw">public interface</span> <span class="ty">IDamageable</span>
+{
+    <span class="kw">void</span> <span class="fn">TakeDamage</span>(<span class="kw">float</span> amount, <span class="ty">Vector3</span> point);
+}
+
+<span class="kw">public class</span> <span class="ty">Enemy</span> : <span class="ty">MonoBehaviour</span>, <span class="ty">IDamageable</span>
+{
+    [<span class="ty">SerializeField</span>] <span class="kw">private float</span> _health = <span class="nm">100f</span>;
+
+    <span class="kw">public void</span> <span class="fn">TakeDamage</span>(<span class="kw">float</span> amount, <span class="ty">Vector3</span> point)
+    {
+        _health -= amount;
+        <span class="fn">SpawnHitFx</span>(point);
+        <span class="kw">if</span> (_health &lt;= <span class="nm">0f</span>) <span class="fn">Die</span>();
+    }
+}
+
+<span class="cm">// The weapon never needs to know what it hit.</span>
+<span class="kw">if</span> (hit.collider.<span class="fn">TryGetComponent</span>(<span class="kw">out</span> <span class="ty">IDamageable</span> target))
+    target.<span class="fn">TakeDamage</span>(_damage, hit.point);</pre>
+
+          <pre data-cs-panel="1" hidden><span class="cm">// Systems react to the game, not to each other.</span>
+<span class="kw">public static class</span> <span class="ty">GameEvents</span>
+{
+    <span class="kw">public static event</span> <span class="ty">Action</span>&lt;<span class="kw">int</span>&gt; ScoreChanged;
+    <span class="kw">public static event</span> <span class="ty">Action</span> PlayerDied;
+
+    <span class="kw">public static void</span> <span class="fn">RaiseScore</span>(<span class="kw">int</span> value) =&gt; ScoreChanged?.<span class="fn">Invoke</span>(value);
+    <span class="kw">public static void</span> <span class="fn">RaiseDeath</span>() =&gt; PlayerDied?.<span class="fn">Invoke</span>();
+}
+
+<span class="kw">public class</span> <span class="ty">HudView</span> : <span class="ty">MonoBehaviour</span>
+{
+    <span class="kw">private void</span> <span class="fn">OnEnable</span>()  =&gt; <span class="ty">GameEvents</span>.ScoreChanged += <span class="fn">Redraw</span>;
+    <span class="kw">private void</span> <span class="fn">OnDisable</span>() =&gt; <span class="ty">GameEvents</span>.ScoreChanged -= <span class="fn">Redraw</span>;
+
+    <span class="kw">private void</span> <span class="fn">Redraw</span>(<span class="kw">int</span> score) =&gt; _label.text = score.<span class="fn">ToString</span>(<span class="st">"N0"</span>);
+}</pre>
+
+          <pre data-cs-panel="2" hidden><span class="cm">// One pool, any prefab — no allocations mid-gameplay.</span>
+<span class="kw">public class</span> <span class="ty">Pool</span>&lt;<span class="ty">T</span>&gt; <span class="kw">where</span> <span class="ty">T</span> : <span class="ty">Component</span>
+{
+    <span class="kw">private readonly</span> <span class="ty">Queue</span>&lt;<span class="ty">T</span>&gt; _idle = <span class="kw">new</span>();
+    <span class="kw">private readonly</span> <span class="ty">T</span> _prefab;
+
+    <span class="kw">public</span> <span class="fn">Pool</span>(<span class="ty">T</span> prefab, <span class="kw">int</span> warm)
+    {
+        _prefab = prefab;
+        <span class="kw">for</span> (<span class="kw">int</span> i = <span class="nm">0</span>; i &lt; warm; i++) _idle.<span class="fn">Enqueue</span>(<span class="fn">Create</span>());
+    }
+
+    <span class="kw">public</span> <span class="ty">T</span> <span class="fn">Get</span>(<span class="ty">Vector3</span> at)
+    {
+        <span class="ty">T</span> item = _idle.Count &gt; <span class="nm">0</span> ? _idle.<span class="fn">Dequeue</span>() : <span class="fn">Create</span>();
+        item.transform.position = at;
+        item.gameObject.<span class="fn">SetActive</span>(<span class="kw">true</span>);
+        <span class="kw">return</span> item;
+    }
+
+    <span class="kw">public void</span> <span class="fn">Release</span>(<span class="ty">T</span> item)
+    {
+        item.gameObject.<span class="fn">SetActive</span>(<span class="kw">false</span>);
+        _idle.<span class="fn">Enqueue</span>(item);
+    }
+}</pre>
+
+          <pre data-cs-panel="3" hidden><span class="cm">// Coroutines for gameplay timing…</span>
+<span class="kw">private</span> <span class="ty">IEnumerator</span> <span class="fn">DashRoutine</span>()
+{
+    _state = <span class="ty">State</span>.Dashing;
+    <span class="kw">float</span> t = <span class="nm">0f</span>;
+
+    <span class="kw">while</span> (t &lt; _dashTime)
+    {
+        t += <span class="ty">Time</span>.deltaTime;
+        _rb.<span class="fn">MovePosition</span>(_rb.position + _dir * _dashSpeed * <span class="ty">Time</span>.deltaTime);
+        <span class="kw">yield return null</span>;
+    }
+
+    _state = <span class="ty">State</span>.Grounded;
+}
+
+<span class="cm">// …async for anything that waits on the outside world.</span>
+<span class="kw">private async</span> <span class="ty">Task</span> <span class="fn">LoadRemoteConfigAsync</span>()
+{
+    <span class="kw">await</span> _remote.<span class="fn">FetchAsync</span>();
+    _difficulty = _remote.<span class="fn">GetInt</span>(<span class="st">"start_difficulty"</span>, <span class="nm">1</span>);
+}</pre>
+
+          <pre data-cs-panel="4" hidden><span class="cm">// Reading game state without writing another loop.</span>
+<span class="kw">var</span> nearest = _enemies
+    .<span class="fn">Where</span>(e =&gt; e.IsAlive)
+    .<span class="fn">OrderBy</span>(e =&gt; (e.Position - player.Position).sqrMagnitude)
+    .<span class="fn">FirstOrDefault</span>();
+
+<span class="kw">var</span> unlocked = _levels
+    .<span class="fn">Where</span>(l =&gt; l.StarsEarned &gt; <span class="nm">0</span>)
+    .<span class="fn">GroupBy</span>(l =&gt; l.World)
+    .<span class="fn">ToDictionary</span>(g =&gt; g.Key, g =&gt; g.<span class="fn">Count</span>());
+
+<span class="cm">// Kept out of Update() — LINQ allocates, and mobile notices.</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= UNITY ECOSYSTEM ======================= -->
+<section id="unity">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="path mono">Scene / Unity</div>
+      <h2>Inside the engine</h2>
+      <p class="lede">The six areas a gameplay build usually lives in, and what I handle in each.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card eco tilt rv"><h3>Gameplay</h3><ul><li>character controllers</li><li>movement</li><li>combat</li><li>interaction</li><li>mechanics</li><li>game states</li></ul></article>
+      <article class="card eco tilt rv" data-d="1"><h3>Physics</h3><ul><li>rigidbody systems</li><li>collision detection</li><li>triggers</li><li>forces</li><li>physics interactions</li></ul></article>
+      <article class="card eco tilt rv" data-d="2"><h3>Systems</h3><ul><li>managers</li><li>spawn systems</li><li>object pooling</li><li>save systems</li><li>progression</li><li>level management</li></ul></article>
+      <article class="card eco tilt rv"><h3>UI</h3><ul><li>menus</li><li>hud</li><li>progress bars</li><li>buttons</li><li>game states</li><li>mobile interfaces</li></ul></article>
+      <article class="card eco tilt rv" data-d="1"><h3>Input</h3><ul><li>keyboard</li><li>mouse</li><li>touch</li><li>mobile controls</li><li>custom input systems</li></ul></article>
+      <article class="card eco tilt rv" data-d="2"><h3>Optimization</h3><ul><li>object pooling</li><li>efficient update loops</li><li>memory awareness</li><li>mobile performance</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ GENRES ============================ -->
+<section id="games">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="path mono">Scene / Genres</div>
+      <h2>I don't build one type of game.</h2>
+      <p class="lede">Give me a mechanic. I'll build the system behind it. Genre isn't the limitation — mechanics and systems are what matter.</p>
+    </div>
+    <div class="genres">
+      <article class="genre tilt rv"><span class="spark"></span>
+        <div class="gname">Action</div>
+        <p>Combat, movement, enemies, weapons, abilities and responsive gameplay.</p>
+        <svg class="gviz" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 80 70 30M62 22l16 16M28 72l-8 8 8-8zM70 30l-6-6"/><circle cx="50" cy="50" r="26" opacity=".35"/></svg>
+      </article>
+      <article class="genre tilt rv" data-d="1"><span class="spark"></span>
+        <div class="gname">Simulation</div>
+        <p>Systems, resources, interactions, progression and state management.</p>
+        <svg class="gviz" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><circle cx="34" cy="34" r="12"/><circle cx="68" cy="44" r="9"/><circle cx="46" cy="72" r="10"/><path d="M44 38 59 42M40 46 44 62M56 52 52 66"/></svg>
+      </article>
+      <article class="genre tilt rv" data-d="2"><span class="spark"></span>
+        <div class="gname">Arcade</div>
+        <p>Fast mechanics, scoring, feedback loops and replayability.</p>
+        <svg class="gviz" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><rect x="18" y="38" width="64" height="34" rx="16"/><path d="M34 48v14M27 55h14M62 52h.01M70 60h.01"/></svg>
+      </article>
+      <article class="genre tilt rv" data-d="3"><span class="spark"></span>
+        <div class="gname">Hypercasual</div>
+        <p>Simple controls, instant feedback, short loops and mobile optimization.</p>
+        <svg class="gviz" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><path d="M30 70 50 30l20 40z"/><circle cx="50" cy="76" r="4"/></svg>
+      </article>
+      <article class="genre tilt rv"><span class="spark"></span>
+        <div class="gname">Puzzle</div>
+        <p>Logic systems, interactions, progression and level-based mechanics.</p>
+        <svg class="gviz" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 30h20a8 8 0 0 1 16 0h16v20a8 8 0 0 0 0 16v14H60a8 8 0 0 0-16 0H24z"/></svg>
+      </article>
+      <article class="genre tilt rv" data-d="1"><span class="spark"></span>
+        <div class="gname">Racing</div>
+        <p>Vehicle movement, physics, checkpoints, racing logic and progression.</p>
+        <svg class="gviz" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 62h64M26 62l8-16h32l8 16"/><circle cx="34" cy="70" r="7"/><circle cx="66" cy="70" r="7"/></svg>
+      </article>
+      <article class="genre tilt rv" data-d="2"><span class="spark"></span>
+        <div class="gname">Physics</div>
+        <p>Rigidbody interactions, forces, collisions and emergent gameplay.</p>
+        <svg class="gviz" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><circle cx="34" cy="60" r="12"/><rect x="54" y="46" width="26" height="26" rx="3"/><path d="M20 78h64M46 54l6-6"/></svg>
+      </article>
+      <article class="genre tilt rv" data-d="3"><span class="spark"></span>
+        <div class="gname">Casual</div>
+        <p>Accessible mechanics, UI, progression, rewards and monetization.</p>
+        <svg class="gviz" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"><path d="M50 74 30 56a13 13 0 1 1 20-16 13 13 0 1 1 20 16z"/></svg>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CAN I BUILD IT ==================== -->
+<section id="canibuild">
+  <div class="wrap">
+    <div class="picker rv">
+      <div class="path mono">Interactive / Can I build it?</div>
+      <h2 style="font-size:clamp(1.9rem,4vw,3.1rem)">What kind of game are you thinking about?</h2>
+      <p class="lede" style="margin-top:16px">Pick a direction and I'll show you the systems I'd start writing.</p>
+      <div class="pick-btns" id="pickBtns" role="group" aria-label="Choose a genre">
+        <button class="pick" data-g="action" aria-pressed="true">action</button>
+        <button class="pick" data-g="simulation" aria-pressed="false">simulation</button>
+        <button class="pick" data-g="arcade" aria-pressed="false">arcade</button>
+        <button class="pick" data-g="hypercasual" aria-pressed="false">hypercasual</button>
+        <button class="pick" data-g="puzzle" aria-pressed="false">puzzle</button>
+        <button class="pick" data-g="racing" aria-pressed="false">racing</button>
+        <button class="pick" data-g="casual" aria-pressed="false">casual</button>
+        <button class="pick" data-g="physics" aria-pressed="false">physics</button>
+      </div>
+      <div class="answer" id="answer" aria-live="polite">
+        <h3 id="ansTitle">Yes — here's how I'd start.</h3>
+        <p id="ansText" class="muted"></p>
+        <div class="sys" id="ansSys"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PIPELINE ============================ -->
+<section id="pipeline">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="path mono">Scene / Pipeline</div>
+      <h2>How a mechanic becomes a build</h2>
+      <p class="lede">The same eight steps every time, whether it's a weekend prototype or a full mobile project.</p>
+    </div>
+    <div class="pipe" id="pipe">
+      <article class="step"><div class="n">01</div><h3>Idea</h3><p>The concept or the core mechanic, stated in one sentence.</p></article>
+      <article class="step"><div class="n">02</div><h3>Design</h3><p>Break that mechanic down into the systems it actually needs.</p></article>
+      <article class="step"><div class="n">03</div><h3>Prototype</h3><p>Build the core loop and find out whether it feels good yet.</p></article>
+      <article class="step"><div class="n">04</div><h3>Systems</h3><p>UI, progression, physics, enemies, levels, save data.</p></article>
+      <article class="step"><div class="n">05</div><h3>Integration</h3><p>Firebase, ads, analytics and the services around the game.</p></article>
+      <article class="step"><div class="n">06</div><h3>Polish</h3><p>Feedback, animation, sound hooks, game feel, UX.</p></article>
+      <article class="step"><div class="n">07</div><h3>Optimization</h3><p>Frame time, memory and stability on real devices.</p></article>
+      <article class="step"><div class="n">08</div><h3>Build</h3><p>Prepare the final playable build and ship it.</p></article>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ==================== BEYOND GAMEPLAY ==================== -->
+<section id="services">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="path mono">Scene / Services</div>
+      <h2>Beyond gameplay</h2>
+      <p class="lede">A modern game is more than its gameplay code. I can integrate the services that connect the game to the wider ecosystem.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card tilt rv">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17 12 3l3.5 6.5L19 17l-7 4z"/><path d="m5 17 10-8"/></svg>
+        <h3>Firebase</h3>
+        <p>Integrating Firebase into Unity projects — analytics, remote configuration, player data, event tracking and backend-connected functionality.</p>
+      </article>
+      <article class="card tilt rv" data-d="1">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4M7 10l2.5 2.5L7 15"/></svg>
+        <h3>Advertising</h3>
+        <p>Advertisement SDK integration: rewarded ads, interstitials, ad callbacks and the monetization flows around them.</p>
+      </article>
+      <article class="card tilt rv" data-d="2">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20V10M10 20V4M16 20v-7M22 20h-20"/></svg>
+        <h3>Game analytics</h3>
+        <p>Measuring what players actually do — events, sessions, engagement, retention concepts and monetization events feeding back into design.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MOBILE ============================ -->
+<section id="mobile">
+  <div class="wrap split">
+    <div class="rv">
+      <div class="path mono">Scene / Mobile</div>
+      <h2>Built with mobile in mind</h2>
+      <p class="lede" style="margin-top:20px">Mobile games have different constraints. Touch input, screen sizes, performance, memory, loading times, monetization and retention all change how a game should be designed — not just how it's ported.</p>
+    </div>
+    <div class="rv" data-d="1">
+      <div class="grid g2">
+        <div class="card"><h3>Touch controls</h3><p>Input built for thumbs, not remapped from a keyboard.</p></div>
+        <div class="card"><h3>Mobile UI</h3><p>Layouts that survive every aspect ratio and safe area.</p></div>
+        <div class="card"><h3>Performance</h3><p>Lightweight systems, pooled objects, disciplined update loops.</p></div>
+        <div class="card"><h3>Live services</h3><p>Ads, analytics, progression and fast loading on real devices.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHAT I CAN BUILD ==================== -->
+<section id="build">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="path mono">Scene / Capabilities</div>
+      <h2>What I can build</h2>
+    </div>
+    <div class="grid g4">
+      <article class="card eco rv"><h3>Gameplay</h3><ul><li>player controllers</li><li>combat systems</li><li>movement</li><li>interaction</li><li>enemy logic</li><li>weapons</li><li>abilities</li><li>health</li><li>game states</li></ul></article>
+      <article class="card eco rv" data-d="1"><h3>Systems</h3><ul><li>level systems</li><li>progression</li><li>save / load</li><li>object pooling</li><li>spawning</li><li>inventory</li><li>currency</li><li>rewards</li></ul></article>
+      <article class="card eco rv" data-d="2"><h3>Mobile</h3><ul><li>touch controls</li><li>mobile ui</li><li>ads</li><li>firebase</li><li>analytics</li><li>performance</li></ul></article>
+      <article class="card eco rv" data-d="3"><h3>Polish</h3><ul><li>ui animation</li><li>gameplay feedback</li><li>camera effects</li><li>game feel</li><li>juice</li><li>transitions</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ PHILOSOPHY ============================ -->
+<section id="philosophy">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="path mono">Scene / Philosophy</div>
+      <h2>How I think about game development</h2>
+    </div>
+    <div class="phil">
+      <div class="phil-row rv"><div class="n">01</div><div><h3>Mechanics first</h3><p>A game should feel good before it looks impressive.</p></div></div>
+      <div class="phil-row rv"><div class="n">02</div><div><h3>Systems should be understandable</h3><p>Clean code makes iteration faster — and iteration is what makes games good.</p></div></div>
+      <div class="phil-row rv"><div class="n">03</div><div><h3>Performance matters</h3><p>Especially on mobile. Every system has a cost, and something has to pay it.</p></div></div>
+      <div class="phil-row rv"><div class="n">04</div><div><h3>Player experience comes first</h3><p>Technology exists to serve gameplay, never the other way round.</p></div></div>
+      <div class="phil-row rv"><div class="n">05</div><div><h3>Build, test, improve</h3><p>Game development is iterative. The first version is a question, not an answer.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MINDSET ============================ -->
+<section id="mindset" class="mind">
+  <div class="wrap split">
+    <div class="rv">
+      <div class="path mono">Scene / Mindset</div>
+      <h2>Behind the Inspector</h2>
+    </div>
+    <div class="stack">
+      <p class="rv">I like understanding what's happening behind the Inspector.</p>
+      <p class="rv dim" data-d="1">When a system behaves unexpectedly, I want to understand why.</p>
+      <p class="rv dim" data-d="2">When performance drops, I want to identify the bottleneck.</p>
+      <p class="rv dim" data-d="3">When a mechanic feels wrong, I break it into smaller systems and rebuild it.</p>
+      <p class="rv" data-d="4">That's the mindset I bring to game development.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HONEST PORTFOLIO NOTE ==================== -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="about-card rv" style="max-width:78ch">
+      <div class="path mono">Scene / Portfolio</div>
+      <h2 style="font-size:clamp(1.8rem,3.6vw,2.8rem)">The work is coming. The skills are already here.</h2>
+      <p class="lede" style="margin-top:22px">I'm currently building my public portfolio. Rather than filling this site with fabricated case studies, I'd rather let my technical understanding, development approach and this page itself speak for me.</p>
+      <p style="margin:0;font-weight:700;font-size:1.05rem">Build interesting games. Solve difficult gameplay problems. Keep learning. Keep shipping.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ STACK ============================ -->
+<section id="stack">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="path mono">Scene / Stack</div>
+      <h2>Development stack</h2>
+    </div>
+    <div class="wall rv">
+      <div class="primary"><b>Unity</b><small>engine</small></div>
+      <div class="primary"><b>C#</b><small>language</small></div>
+      <div><b>Firebase</b><small>backend services</small></div>
+      <div><b>Analytics</b><small>player behaviour</small></div>
+      <div><b>Ad SDKs</b><small>monetization</small></div>
+      <div><b>Git</b><small>version control</small></div>
+      <div><b>Visual Studio / Rider</b><small>ide</small></div>
+      <div><b>.NET</b><small>concepts</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOCUS ============================ -->
+<section id="focus">
+  <div class="wrap split">
+    <div class="rv">
+      <div class="path mono">Scene / Next</div>
+      <h2>What I'm building toward</h2>
+    </div>
+    <div class="rv" data-d="1">
+      <p class="lede">My long-term goal is to keep developing increasingly ambitious games and eventually expand from mobile-focused development into larger PC and Steam projects.</p>
+      <p class="lede">I want to keep improving not only as a programmer, but as a complete game developer who understands mechanics, systems, optimization, monetization, player experience and production.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ============================ -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2 class="rv">Have a game idea?</h2>
+    <p class="lede rv" data-d="1">Let's turn the mechanic in your head into something playable.</p>
+    <div class="cta-btns rv" data-d="2">
+      <a class="btn btn-primary magnetic" href="mailto:sherwaani3688@gmail.com?subject=Game%20project%20enquiry">Let's talk</a>
+      <a class="btn btn-ghost magnetic" href="https://www.linkedin.com/in/sherwaani/" target="_blank" rel="noopener">View LinkedIn</a>
+    </div>
+    <div class="cta-meta rv" data-d="3">
+      <a href="mailto:sherwaani3688@gmail.com">sherwaani3688@gmail.com</a>
+      <span>Lahore, Pakistan</span>
+      <span>Open to projects and collaborations</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="fb">Hasan</div>
+      <div class="fm">Unity Game Developer<br>Unity · C# · Gameplay · Systems<br>Lahore, Pakistan</div>
+    </div>
+    <div class="fm">
+      <a href="mailto:sherwaani3688@gmail.com">sherwaani3688@gmail.com</a><br>
+      <a href="https://www.linkedin.com/in/sherwaani/" target="_blank" rel="noopener">linkedin.com/in/sherwaani</a><br>
+      © 2026 Hasan. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var FINE = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+var $ = function(s,c){return (c||document).querySelector(s);};
+var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+var lerp = function(a,b,t){return a+(b-a)*t;};
+var clamp = function(v,a,b){return v<a?a:v>b?b:v;};
+
+/* ---------------- scroll reveal ---------------- */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting) return;
+    e.target.classList.add("in");
+    if(e.target.hasAttribute("data-count")) countUp(e.target);
+    io.unobserve(e.target);
+  });
+},{rootMargin:"0px 0px -12% 0px",threshold:.15});
+$$(".rv, .tl-item, [data-count]").forEach(function(el){io.observe(el);});
+
+/* number counters */
+function countUp(el){
+  var target = parseFloat(el.getAttribute("data-count"));
+  var suffix = el.getAttribute("data-suffix") || "";
+  if(RM){ el.textContent = target + suffix; return; }
+  var start = performance.now(), dur = 1100;
+  (function step(now){
+    var p = clamp((now-start)/dur,0,1);
+    var eased = 1-Math.pow(1-p,3);
+    el.textContent = Math.round(target*eased) + (p===1?suffix:"");
+    if(p<1) requestAnimationFrame(step);
+  })(performance.now());
+}
+
+/* stats bars in hero */
+setTimeout(function(){
+  $$(".f-stats .bar i").forEach(function(i){ i.style.transform = "scaleX("+i.getAttribute("data-fill")+")"; });
+},700);
+
+/* ---------------- word-split statement ---------------- */
+(function(){
+  var h = $("[data-split]"); if(!h) return;
+  var nodes = Array.prototype.slice.call(h.childNodes), idx = 0;
+  function splitInto(container, text){
+    text.split(/\s+/).filter(Boolean).forEach(function(word){
+      var w = document.createElement("span"); w.className = "w";
+      var i = document.createElement("i"); i.textContent = word;
+      i.style.transitionDelay = (idx++ * 0.055) + "s";
+      w.appendChild(i); container.appendChild(w);
+      container.appendChild(document.createTextNode(" "));
+    });
+  }
+  var frag = document.createDocumentFragment();
+  nodes.forEach(function(n){
+    if(n.nodeType === 3){ splitInto(frag, n.textContent); }
+    else { var el = n.cloneNode(false); splitInto(el, n.textContent); frag.appendChild(el); }
+  });
+  h.innerHTML = ""; h.appendChild(frag);
+  new IntersectionObserver(function(es,obs){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); obs.unobserve(e.target); } });
+  },{threshold:.4}).observe($("#statement"));
+})();
+
+/* ---------------- navigation ---------------- */
+var nav = $("#nav"), burger = $("#burger"), mobileMenu = $("#mobileMenu");
+var navLinks = $$(".nav-links a");
+burger.addEventListener("click", function(){
+  var open = nav.classList.toggle("open");
+  burger.setAttribute("aria-expanded", open ? "true" : "false");
+  burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+});
+$$("#mobileMenu a").forEach(function(a){
+  a.addEventListener("click", function(){ nav.classList.remove("open"); burger.setAttribute("aria-expanded","false"); });
+});
+var sections = $$("main section[id]");
+var lastY = -1, ticking = false;
+function onScroll(){
+  var y = window.scrollY || window.pageYOffset;
+  nav.classList.toggle("stuck", y > 40);
+  var current = "";
+  for(var i=0;i<sections.length;i++){
+    if(sections[i].offsetTop - 140 <= y) current = sections[i].id;
+  }
+  navLinks.forEach(function(a){
+    a.classList.toggle("active", a.getAttribute("href") === "#"+current);
+  });
+  timelineProgress(y);
+  pipelineProgress(y);
+}
+window.addEventListener("scroll", function(){
+  if(ticking) return; ticking = true;
+  requestAnimationFrame(function(){ onScroll(); ticking = false; });
+},{passive:true});
+
+/* ---------------- timeline fill ---------------- */
+var tl = $("#timeline"), tlFill = $("#tlFill");
+function timelineProgress(y){
+  if(!tl) return;
+  var r = tl.getBoundingClientRect();
+  var p = clamp((window.innerHeight*0.72 - r.top) / (r.height*0.92), 0, 1);
+  tlFill.style.transform = "scaleY("+p.toFixed(3)+")";
+}
+
+/* ---------------- pipeline steps ---------------- */
+var pipe = $("#pipe"), steps = $$(".step", pipe);
+function pipelineProgress(y){
+  if(!pipe) return;
+  var r = pipe.getBoundingClientRect();
+  var p = clamp((window.innerHeight*0.85 - r.top) / (r.height + window.innerHeight*0.25), 0, 1);
+  var active = Math.round(p * steps.length);
+  steps.forEach(function(s,i){ s.classList.toggle("on", i < active); });
+}
+
+/* ---------------- C# tabs ---------------- */
+var files = ["IDamageable.cs","GameEvents.cs","Pool.cs","PlayerDash.cs","QueryHelpers.cs"];
+$$(".cs-tab").forEach(function(tab){
+  tab.addEventListener("click", function(){
+    var i = tab.getAttribute("data-cs");
+    $$(".cs-tab").forEach(function(t){ t.setAttribute("aria-selected", t===tab ? "true":"false"); });
+    $$("[data-cs-panel]").forEach(function(p){ p.hidden = p.getAttribute("data-cs-panel") !== i; });
+    $("#fileName").textContent = files[+i];
+  });
+});
+
+/* ---------------- can I build it ---------------- */
+var GENRES = {
+  action:{t:"Action — yes.", d:"I'd start with the feel of the character, then build outward until enemies have something worth fighting against.",
+    s:["player controller","combat system","hit detection","enemy AI states","ability cooldowns","health & damage","camera shake","weapon switching"]},
+  simulation:{t:"Simulation — yes.", d:"Simulations live or die on their state model, so I'd design the data first and let the interactions read from it.",
+    s:["resource model","tick / update loop","progression curves","state management","save & load","interaction systems","UI data binding"]},
+  arcade:{t:"Arcade — yes.", d:"Short loop, instant restart, and a score that keeps you honest. Feedback is the whole product here.",
+    s:["scoring & combos","difficulty ramp","spawn patterns","object pooling","juice & feedback","local leaderboard","restart flow"]},
+  hypercasual:{t:"Hypercasual — yes.", d:"One-thumb control, a loop under 30 seconds, and a build light enough to run on a five-year-old phone.",
+    s:["one-touch input","fast game loop","level generator","mobile optimization","rewarded ads","interstitial pacing","analytics events"]},
+  puzzle:{t:"Puzzle — yes.", d:"The rules are the mechanic, so I'd build a clean rule engine and make levels data, not code.",
+    s:["grid / board logic","move validation","level data format","undo & reset","hint system","progression & stars","level unlocks"]},
+  racing:{t:"Racing — yes.", d:"Vehicle handling comes first — everything else is scaffolding around how the car feels in a corner.",
+    s:["vehicle physics","input & steering","checkpoints & laps","lap timing","AI opponents","camera follow","track progression"]},
+  casual:{t:"Casual — yes.", d:"Accessible mechanics with a reward loop that respects the player and still pays for itself.",
+    s:["simple core loop","UI & menus","progression","currency & rewards","daily rewards","ads integration","player data"]},
+  physics:{t:"Physics — yes.", d:"Rigidbodies do the interesting work; my job is tuning forces and keeping the simulation stable.",
+    s:["rigidbody setup","force & impulse tuning","collision & triggers","joints & constraints","fixed timestep tuning","emergent interactions"]}
+};
+var ansTitle = $("#ansTitle"), ansText = $("#ansText"), ansSys = $("#ansSys");
+function showGenre(key){
+  var g = GENRES[key]; if(!g) return;
+  ansTitle.textContent = g.t; ansText.textContent = g.d;
+  ansSys.innerHTML = "";
+  g.s.forEach(function(item,i){
+    var s = document.createElement("span");
+    s.textContent = item;
+    s.style.animationDelay = (RM ? 0 : i*0.045) + "s";
+    ansSys.appendChild(s);
+  });
+}
+$$(".pick").forEach(function(b){
+  b.addEventListener("click", function(){
+    $$(".pick").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+    b.setAttribute("aria-pressed","true");
+    showGenre(b.getAttribute("data-g"));
+  });
+});
+showGenre("action");
+
+/* ---------------- pointer-driven effects ---------------- */
+var glowTargets = $$(".card, .genre");
+if(FINE){
+  glowTargets.forEach(function(el){
+    el.addEventListener("pointermove", function(e){
+      var r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", (e.clientX-r.left)+"px");
+      el.style.setProperty("--my", (e.clientY-r.top)+"px");
+    });
+  });
+}
+
+/* 3D tilt */
+if(FINE && !RM){
+  $$(".tilt").forEach(function(el){
+    var raf = null, tx = 0, ty = 0;
+    el.addEventListener("pointermove", function(e){
+      var r = el.getBoundingClientRect();
+      tx = ((e.clientY - r.top)/r.height - .5) * -7;
+      ty = ((e.clientX - r.left)/r.width - .5) * 9;
+      if(!raf) raf = requestAnimationFrame(apply);
+    });
+    el.addEventListener("pointerleave", function(){ tx = 0; ty = 0; if(!raf) raf = requestAnimationFrame(apply); });
+    function apply(){
+      raf = null;
+      el.style.transform = (tx||ty) ? "perspective(900px) rotateX("+tx+"deg) rotateY("+ty+"deg) translateY(-3px)" : "";
+    }
+  });
+}
+
+/* magnetic buttons */
+if(FINE && !RM){
+  $$(".magnetic").forEach(function(el){
+    el.addEventListener("pointermove", function(e){
+      var r = el.getBoundingClientRect();
+      var dx = (e.clientX - (r.left+r.width/2))*.22;
+      var dy = (e.clientY - (r.top+r.height/2))*.3;
+      el.style.transform = "translate("+dx.toFixed(1)+"px,"+dy.toFixed(1)+"px)";
+    });
+    el.addEventListener("pointerleave", function(){ el.style.transform = ""; });
+  });
+}
+
+/* ---------------- custom cursor ---------------- */
+var mouse = {x: innerWidth/2, y: innerHeight/2};
+if(FINE){
+  var dot = $(".cur"), ring = $(".cur-ring");
+  var rx = mouse.x, ry = mouse.y;
+  document.addEventListener("pointermove", function(e){
+    mouse.x = e.clientX; mouse.y = e.clientY;
+    dot.style.transform = "translate("+e.clientX+"px,"+e.clientY+"px)";
+    var t = e.target.closest("a,button,.genre,.card,.chip");
+    ring.classList.toggle("hot", !!t);
+  },{passive:true});
+  document.addEventListener("pointerdown", function(){ ring.style.opacity=".5"; });
+  document.addEventListener("pointerup", function(){ ring.style.opacity="1"; });
+  (function ringLoop(){
+    rx = lerp(rx, mouse.x, .18); ry = lerp(ry, mouse.y, .18);
+    ring.style.transform = "translate("+rx.toFixed(2)+"px,"+ry.toFixed(2)+"px)";
+    requestAnimationFrame(ringLoop);
+  })();
+}
+
+/* ---------------- hero parallax panels ---------------- */
+var floats = $$(".float");
+var scene = $("#scene");
+var px = 0, py = 0, tpx = 0, tpy = 0;
+if(FINE && !RM && scene){
+  window.addEventListener("pointermove", function(e){
+    tpx = (e.clientX / innerWidth - .5) * 2;
+    tpy = (e.clientY / innerHeight - .5) * 2;
+  },{passive:true});
+}
+
+/* ---------------- hero scene canvas ---------------- */
+var cvs = $("#sceneCanvas"), ctx = cvs && cvs.getContext("2d");
+var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+var parts = [];
+function sizeCanvas(){
+  if(!cvs) return;
+  var r = cvs.parentNode.getBoundingClientRect();
+  W = r.width; H = r.height;
+  cvs.width = Math.round(W*DPR); cvs.height = Math.round(H*DPR);
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  parts = [];
+  var n = W < 420 ? 16 : 30;
+  for(var i=0;i<n;i++){
+    parts.push({x:Math.random()*W, y:Math.random()*H, z:Math.random()*.8+.2, s:Math.random()*1.5+.6, v:Math.random()*.16+.05});
+  }
+}
+window.addEventListener("resize", function(){ sizeCanvas(); }, {passive:true});
+
+/* rotating wireframe cube — the most literal GameObject there is */
+var CUBE = [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]];
+var EDGES = [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+function drawScene(t){
+  if(!ctx) return;
+  ctx.clearRect(0,0,W,H);
+
+  /* horizon grid */
+  var cx = W/2, cy = H*0.62, span = W*0.9;
+  ctx.strokeStyle = "rgba(120,150,200,0.13)"; ctx.lineWidth = 1;
+  for(var i=-6;i<=6;i++){
+    ctx.beginPath();
+    ctx.moveTo(cx + i*(span/14), cy);
+    ctx.lineTo(cx + i*(span/3.4), H);
+    ctx.stroke();
+  }
+  var scroll = RM ? 0 : (t*0.00006) % 1;
+  for(var k=0;k<8;k++){
+    var f = ((k+scroll)/8);
+    var yy = cy + Math.pow(f,2.1)*(H-cy);
+    ctx.globalAlpha = 1 - f*0.85;
+    ctx.beginPath(); ctx.moveTo(cx-span, yy); ctx.lineTo(cx+span, yy); ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+
+  /* cube */
+  var ang = RM ? .6 : t*0.00028;
+  var ax = Math.sin(ang*0.7)*0.45 + 0.35, ay = ang;
+  var size = Math.min(W,H)*0.20, ox = cx + px*10, oy = H*0.40 + py*10;
+  var pts = CUBE.map(function(p){
+    var x=p[0],y=p[1],z=p[2];
+    var x1 = x*Math.cos(ay) - z*Math.sin(ay), z1 = x*Math.sin(ay) + z*Math.cos(ay);
+    var y1 = y*Math.cos(ax) - z1*Math.sin(ax), z2 = y*Math.sin(ax) + z1*Math.cos(ax);
+    var s = 3.2/(3.2+z2);
+    return [ox + x1*size*s, oy + y1*size*s, s];
+  });
+  ctx.lineWidth = 1.4;
+  EDGES.forEach(function(e){
+    var a = pts[e[0]], b = pts[e[1]];
+    var alpha = clamp((a[2]+b[2]-1.4)*1.5, .18, .95);
+    ctx.strokeStyle = "rgba(62,139,255," + alpha.toFixed(2) + ")";
+    ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); ctx.stroke();
+  });
+  pts.forEach(function(p){
+    ctx.fillStyle = "rgba(255,176,32," + clamp(p[2]-.55,.15,.9).toFixed(2) + ")";
+    ctx.fillRect(p[0]-2, p[1]-2, 4, 4);
+  });
+
+  /* particles */
+  for(var j=0;j<parts.length;j++){
+    var pt = parts[j];
+    if(!RM){ pt.y -= pt.v; if(pt.y < -4){ pt.y = H+4; pt.x = Math.random()*W; } }
+    ctx.fillStyle = "rgba(190,215,255," + (pt.z*0.42).toFixed(2) + ")";
+    ctx.beginPath();
+    ctx.arc(pt.x + px*pt.z*14, pt.y + py*pt.z*10, pt.s, 0, 6.283);
+    ctx.fill();
+  }
+}
+
+/* ---------------- device mini-loop ---------------- */
+var player = $("#player"), ob1 = $("#obst1"), ob2 = $("#obst2");
+
+/* ---------------- master loop ---------------- */
+var fpsEl = $("#fps"), msEl = $("#frameMs");
+var frames = 0, acc = 0, last = performance.now();
+function loop(now){
+  var dt = now - last; last = now;
+  acc += dt; frames++;
+  if(acc >= 500){
+    var fps = Math.round(frames*1000/acc);
+    if(fpsEl) fpsEl.textContent = fps;
+    if(msEl) msEl.textContent = (acc/frames).toFixed(1) + " ms";
+    frames = 0; acc = 0;
+  }
+  px = lerp(px, tpx, .06); py = lerp(py, tpy, .06);
+  for(var i=0;i<floats.length;i++){
+    var d = +floats[i].getAttribute("data-depth");
+    floats[i].style.transform = "translate3d(" + (-px*d).toFixed(2) + "px," + (-py*d*0.65).toFixed(2) + "px,0)";
+  }
+  if(!RM && player){
+    var tt = now*0.001;
+    player.style.transform = "translateX(" + (Math.sin(tt*1.6)*24).toFixed(1) + "px)";
+    ob1.style.transform = "translateY(" + (((tt*38)%150)).toFixed(1) + "px)";
+    ob2.style.transform = "translateY(" + (((tt*30+60)%150)).toFixed(1) + "px)";
+  }
+  drawScene(now);
+  requestAnimationFrame(loop);
+}
+sizeCanvas();
+onScroll();
+requestAnimationFrame(loop);
+
+/* smooth anchor scroll for browsers without CSS smooth scroll */
+$$('a[href^="#"]').forEach(function(a){
+  a.addEventListener("click", function(e){
+    var id = a.getAttribute("href");
+    if(id.length < 2) return;
+    var t = document.querySelector(id);
+    if(!t) return;
+    e.preventDefault();
+    window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: RM ? "auto" : "smooth"});
+    history.replaceState(null,"",id);
+  });
+});
+})();
+</script>
 </body>
 </html>
