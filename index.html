@@ -329,7 +329,7 @@ footer{border-top:1px solid var(--line);padding-block:44px 54px}
 /* ============================ GAMES ============================ */
 .games-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px 40px;flex-wrap:wrap;margin-bottom:clamp(34px,4.5vw,56px)}
 .games-head .btn svg,.game .play svg{width:15px;height:15px}
-.ship{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ship{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;row-gap:18px}
 .game{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.012));transition:border-color .35s,transform .45s var(--ease-out),box-shadow .45s var(--ease-out)}
 .game:hover{border-color:var(--select);transform:translateY(-4px);box-shadow:0 26px 60px -30px rgba(0,0,0,.9)}
 .game .cover{aspect-ratio:63/50;background:var(--panel-solid);overflow:hidden;border-bottom:1px solid var(--line)}
@@ -345,12 +345,16 @@ footer{border-top:1px solid var(--line);padding-block:44px 54px}
 .game:hover .play{color:var(--select)}
 .more-label{font-size:.74rem;color:var(--muted);margin:clamp(34px,4vw,48px) 0 14px}
 .more{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.game.all{justify-content:flex-end;border-style:dashed;border-color:var(--line-strong);background:radial-gradient(120% 90% at 100% 0%,rgba(62,139,255,.14),transparent 60%),linear-gradient(165deg,rgba(255,255,255,.04),rgba(255,255,255,.01))}
+.game.all .body{flex:0;padding:28px}
+.game.all h3{font-size:clamp(1.5rem,2.2vw,2rem)}
 .game.mini .body{padding:14px 16px 16px;gap:4px}
 .game.mini h3{font-size:1rem}
 @media (max-width:1080px){.more{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){
   .ship{grid-template-columns:1fr}
   .ship .game{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr)}
+  .ship .game.all{display:flex;min-height:0}
   .ship .game .cover{aspect-ratio:auto;min-height:100%;border-bottom:0;border-right:1px solid var(--line)}
 }
 @media (max-width:620px){
@@ -531,31 +535,45 @@ footer{border-top:1px solid var(--line);padding-block:44px 54px}
           <span class="play">Download on itch.io <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
         </div>
       </a>
+      <a class="game rv" href="https://sherwaani.itch.io/color-chain" target="_blank" rel="noopener">
+        <div class="cover"><img src="https://img.itch.zone/aW1nLzMwMDkwODI2LnBuZw==/original/xpFkfp.png" alt="Color Chain cover art" width="630" height="500" loading="lazy" decoding="async"></div>
+        <div class="body">
+          <div class="gmeta">2D · Puzzle · Browser</div>
+          <h3>Color Chain</h3>
+          <p>A fast colour-matching puzzle. Match colours under pressure as the challenges ramp up and test your reactions, colour recognition and timing.</p>
+          <div class="gtags"><span>Puzzle</span><span>Colour matching</span><span>Quick sessions</span></div>
+          <span class="play">Play in browser <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </div>
+      </a>
+      <a class="game rv" data-d="1" href="https://sherwaani.itch.io/precision-parking" target="_blank" rel="noopener">
+        <div class="cover"><img src="https://img.itch.zone/aW1nLzI5OTkxNTI5LnBuZw==/original/mZH2MP.png" alt="Precision Parking cover art" width="630" height="500" loading="lazy" decoding="async"></div>
+        <div class="body">
+          <div class="gmeta">Driving · Parking · Browser</div>
+          <h3>Precision Parking</h3>
+          <p>Drive into the marked spot without touching a single obstacle. Every level tightens the space and asks for more control.</p>
+          <div class="gtags"><span>Driving</span><span>Parking</span><span>Level-based</span></div>
+          <span class="play">Play in browser <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </div>
+      </a>
+      <a class="game all rv" data-d="2" href="https://sherwaani.itch.io/" target="_blank" rel="noopener">
+        <div class="body">
+          <div class="gmeta">sherwaani.itch.io</div>
+          <h3>All 7 games on itch.io</h3>
+          <p>Browse every release, leave a rating and follow for new games.</p>
+          <span class="play">Open itch.io <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </div>
+      </a>
     </div>
     <div class="more-label mono rv">More on itch.io</div>
     <div class="more">
-      <a class="game mini rv" href="https://sherwaani.itch.io/color-chain" target="_blank" rel="noopener">
-        <div class="cover"><img src="https://img.itch.zone/aW1nLzMwMDkwODI2LnBuZw==/original/xpFkfp.png" alt="Color Chain cover art" width="630" height="500" loading="lazy" decoding="async"></div>
-        <div class="body">
-          <h3>Color Chain</h3>
-          <div class="gmeta">Puzzle · Browser</div>
-        </div>
-      </a>
-      <a class="game mini rv" data-d="1" href="https://sherwaani.itch.io/color-gate" target="_blank" rel="noopener">
+      <a class="game mini rv" href="https://sherwaani.itch.io/color-gate" target="_blank" rel="noopener">
         <div class="cover"><img src="https://img.itch.zone/aW1nLzMwMTEzODM2LnBuZw==/original/CR1Ls6.png" alt="Color Gate cover art" width="630" height="500" loading="lazy" decoding="async"></div>
         <div class="body">
           <h3>Color Gate</h3>
           <div class="gmeta">Arcade · Browser</div>
         </div>
       </a>
-      <a class="game mini rv" data-d="2" href="https://sherwaani.itch.io/precision-parking" target="_blank" rel="noopener">
-        <div class="cover"><img src="https://img.itch.zone/aW1nLzI5OTkxNTI5LnBuZw==/original/mZH2MP.png" alt="Precision Parking cover art" width="630" height="500" loading="lazy" decoding="async"></div>
-        <div class="body">
-          <h3>Precision Parking</h3>
-          <div class="gmeta">Driving · Browser</div>
-        </div>
-      </a>
-      <a class="game mini rv" data-d="3" href="https://sherwaani.itch.io/helicopter2d" target="_blank" rel="noopener">
+      <a class="game mini rv" data-d="1" href="https://sherwaani.itch.io/helicopter2d" target="_blank" rel="noopener">
         <div class="cover"><img src="https://img.itch.zone/aW1nLzIxNjQ4OTg5LnBuZw==/original/t37qzx.png" alt="Helicopter 2D cover art" width="630" height="500" loading="lazy" decoding="async"></div>
         <div class="body">
           <h3>Helicopter 2D</h3>
